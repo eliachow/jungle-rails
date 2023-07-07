@@ -2,7 +2,7 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
-    <h4>email</h4>
+    <h5><%= @email %></h5>
   </header>
 
   <div class="order-summary jumbotron">
@@ -23,7 +23,7 @@
             TOTAL:
           </th>
           <th>
-            <%= @order.line_items.sum(&:total_price) %>
+            <%= humanized_money_with_symbol @order.line_items.sum(&:total_price) %>
           </th>
         </tr>
       </tfoot>
