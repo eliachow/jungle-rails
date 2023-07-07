@@ -2,6 +2,7 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
+    <h4>email</h4>
   </header>
 
   <div class="order-summary jumbotron">
@@ -16,6 +17,16 @@
         </tr>
       </thead>
       <%= render partial: 'line_item', collection: @order.line_items, as: :line_item %>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <%= @order.line_items.sum(&:total_price) %>
+          </th>
+        </tr>
+      </tfoot>
     </table>
   </div>
 
